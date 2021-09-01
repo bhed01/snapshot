@@ -2,7 +2,7 @@
 	"name": "snapshot",
 	"displayName": "snapshot",
 	"description": "",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "bhed01",
 	"engines": {
 		"vscode": "^1.57.0"
