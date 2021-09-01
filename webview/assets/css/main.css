@@ -1,0 +1,190 @@
+html {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+body {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	padding: 20px;
+	margin: 0;
+}
+.header {
+	width: calc(100% - 4rem);
+	margin: 20px 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	vertical-align: bottom;
+}
+.header__options {
+	display: flex;
+	flex-direction: row;
+}
+.header__size {
+	display: flex;
+	align-items: flex-end;
+}
+.header__background {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	margin-right: 10px;
+}
+.header__checkbox {
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+}
+.snapshot-container {
+	width: calc(100% - 4rem);
+	overflow: hidden;
+	resize: horizontal;
+	border-radius: 5px;
+	background-position: 0px 0px, 10px 10px;
+	background-size: 20px 20px;
+	background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),
+		linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
+}
+.snapshot-container__background {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background: #fff0;
+}
+.terminal {
+	background: var(--vscode-editor-background);
+	overflow: hidden;
+	resize: horizontal;
+	display: flex;
+	flex-direction: column;
+	padding: 18px;
+	margin-top: 32px;
+	margin-bottom: 32px;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 24px;
+	width: calc(100% - 8rem);
+	min-width: 54px;
+	min-height: 14px;
+}
+.terminal__header {
+	margin-bottom: 15px;
+	display: flex;
+}
+.terminal__title {
+	margin-left: 15px;
+}
+.terminal__code-snippet > div {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	max-width: 100%;
+	white-space: pre-wrap !important;
+	word-break: break-all;
+}
+.terminal__code-snippet > div > div.editorLine {
+	width: calc(100% - var(--editor-line-padding-left));
+	padding-left: var(--editor-line-padding-left);
+	min-height: var(--editor-line-min-height);
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+.terminal__code-snippet > div > div.editorLine > .editorLineNumber {
+	color: var(--vscode-editorLineNumber-foreground);
+	width: var(--editor-line-number-width);
+	font-family: var(--vscode-editor-font-family);
+	text-align: right;
+	white-space: nowrap;
+	flex: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+}
+.editorLineNumber__test {
+	font-family: var(--vscode-editor-font-family) !important;
+	font-size: calc(var(--vscode-editor-font-size) * 1px) !important;
+	display: inline-block;
+}
+.shoot {
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	cursor: pointer;
+	margin: 20px 0;
+	transition: all 800ms ease-in-out;
+}
+.shoot:hover {
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+.shoot svg {
+	display: flex;
+	align-self: center;
+}
+.shoot:hover svg #border {
+	fill: #000;
+}
+/*Checkboxes styles*/
+input[type='checkbox'] {
+	display: none;
+}
+
+input[type='checkbox'] + label {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 20px;
+	font: 14px/20px 'Open Sans', Arial, sans-serif;
+	color: #ddd;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+input[type='checkbox'] + label:last-child {
+	margin-bottom: 0;
+}
+
+input[type='checkbox'] + label:before {
+	content: '';
+	display: block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #6cc0e5;
+	position: absolute;
+	left: 0;
+	top: -1px;
+	opacity: 0.6;
+	-webkit-transition: all 0.12s, border-color 0.08s;
+	transition: all 0.12s, border-color 0.08s;
+}
+
+input[type='checkbox']:checked + label:before {
+	width: 10px;
+	top: -5px;
+	left: 5px;
+	border-radius: 0;
+	opacity: 1;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.clpi {
+	display: none;
+}
+.clpi-thumb {
+	width: 20px;
+	height: 20px;
+	margin-left: 0px;
+	border-radius: 0px;
+	margin-right: 15px;
+}
