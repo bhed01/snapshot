@@ -6,8 +6,9 @@ const VIEW_TYPE = 'snapshot';
 const WEB_VIEW_TITLE = 'Snapshot';
 
 const getEditorName = (): string => {
-    const editorName = vscode.window.activeTextEditor?.document.fileName.split('/').pop()
-    return editorName || "";
+    if(vscode.window.activeTextEditor)
+        return path.basename(vscode.window.activeTextEditor.document.fileName);
+    return "";
 }
 
 const createPanel = (context: vscode.ExtensionContext): vscode.WebviewPanel => {
