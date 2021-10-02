@@ -4,6 +4,10 @@
 	"description": "",
 	"version": "0.1.0",
 	"publisher": "bhed01",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bhed01/snapshot.git"
+	},
 	"engines": {
 		"vscode": "^1.57.0"
 	},
