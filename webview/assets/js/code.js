@@ -1,18 +1,18 @@
 import { setProperty } from './utils.js';
 
-const terminalCodeSnippetNode = document.querySelector('.terminal__code-snippet');
+const codeSnippetNode = document.querySelector('.terminal__code-snippet');
 let lineNumberWidth;
 let minHeight;
 const PADDING_LEFT_EXTRA_PX = 15;
 
 const getHtml = (clip) => clip.getData('text/html');
 
-const setupTerminal = (node) => {
-	node.innerHTML = replaceBrByDiv(node.innerHTML);
+export const showLineNumbers = () => {
+	codeSnippetNode.innerHTML = replaceBrByDiv(codeSnippetNode.innerHTML);
 
 	const showLineNumbersNode = document.getElementById('show-line-numbers');
 	if (showLineNumbersNode.checked) {
-		const lines = node.querySelectorAll('div > div');
+		const lines = codeSnippetNode.querySelectorAll('div > div');
 
 		lines.forEach((row, index) => {
 			row.classList.add('editorLine');
@@ -22,7 +22,7 @@ const setupTerminal = (node) => {
 			row.insertBefore(lineNumber, row.firstChild);
 		});
 		lineNumberWidth = computeEditorLineNumberWidth(lines.length);
-		minHeight = computeMinLineHeight(node);
+		minHeight = computeMinLineHeight(codeSnippetNode);
 
 		setProperty('editor-line-number-width', lineNumberWidth + 'px');
 		setProperty('editor-line-min-height', minHeight + 'px');
@@ -45,20 +45,18 @@ const computeEditorLineNumberWidth = (text) => {
 };
 
 const replaceBrByDiv = (str) => {
-	return str.replace(/<br>/gi, '<div></div>');
+	// webview ignores empty <div> elements. So, do not change '<div> </div>' to '<div></div>'
+	return str.replace(/<br>/gi, '<div> </div>');
 };
 
 export const pasteCode = (clip) => {
 	const code = getHtml(clip);
-	terminalCodeSnippetNode.innerHTML = code;
-	setupTerminal(terminalCodeSnippetNode);
+	codeSnippetNode.innerHTML = code;
+	if (document.getElementById('show-line-numbers').checked) 
+		showLineNumbers();
+		
 };
 
-export const showLineNumbers = () => {
-	const editorLineNumbers = document.querySelectorAll('.editorLineNumber');
-	editorLineNumbers.forEach((element) => (element.style.display = 'block'));
-	setProperty('editor-line-padding-left', lineNumberWidth + PADDING_LEFT_EXTRA_PX + 'px');
-};
 
 export const hideLineNumbers = () => {
 	const editorLineNumbers = document.querySelectorAll('.editorLineNumber');
