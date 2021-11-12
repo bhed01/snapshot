@@ -2,7 +2,7 @@
 	"name": "snapshot",
 	"displayName": "snapshot",
 	"description": "",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"publisher": "bhed01",
 	"repository": {
 		"type": "git",
